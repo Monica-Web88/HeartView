@@ -37,8 +37,7 @@ export default function LoadPanel({ onLoadDemo, onLoadFiles, busy, status }) {
 
       <p className={`status ${status.type}`}>{busy ? 'Working…' : status.text}</p>
       <p className="muted small">
-        The demo is a <strong>synthetic phantom</strong> (no patient data). If you use real scans,
-        use public, de-identified data only (e.g. The Cancer Imaging Archive).
+        The demo is a <strong>synthetic phantom</strong> (no patient data).
       </p>
     </section>
   );
