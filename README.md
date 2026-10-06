@@ -64,9 +64,6 @@ Regenerate the demo data any time: `npm run demo-data` (needs Python 3 and numpy
 - **Files won't load** – they must be valid DICOM images. Very unusual compressed transfer syntaxes may not decode.
 - **Version issues** – Cornerstone3D is pinned to `^2.x` in `package.json`. APIs differ between major versions, so avoid upgrading to a new major without checking its migration guide.
 
-## Resume line
-
-> **HeartView** – Built a React and Cornerstone.js dashboard to view coronary CT (DICOM) images and draw ROI annotations on plaque in artery vessels, with real-time area and length measurements.
 
 ## Disclaimer
 
