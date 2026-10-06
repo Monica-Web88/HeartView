@@ -1,0 +1,26 @@
+{
+  "name": "heartview",
+  "private": true,
+  "version": "1.0.0",
+  "description": "HeartView - coronary CT plaque viewer with ROI measurements (React + Cornerstone3D)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "demo-data": "python3 scripts/generate_demo_dicom.py"
+  },
+  "dependencies": {
+    "@cornerstonejs/core": "^2.0.0",
+    "@cornerstonejs/dicom-image-loader": "^2.0.0",
+    "@cornerstonejs/tools": "^2.0.0",
+    "dicom-parser": "^1.8.21",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.0"
+  }
+}
