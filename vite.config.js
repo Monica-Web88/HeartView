@@ -6,7 +6,9 @@ import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 // - dicom-image-loader must NOT be pre-bundled (it spawns ES module web workers)
 // - dicom-parser is CommonJS and must be pre-bundled
 // - @icr/polyseg-wasm is an optional Cornerstone dependency (segmentation
-//   conversion) that HeartView doesn't use, so it is left out of the build
+//   conversion) that HeartView doesn't use, so it is left out of the build.
+//   Cornerstone imports it from a web worker, so it must be external in both
+//   the main build and the worker build.
 export default defineConfig({
   plugins: [react(), viteCommonjs()],
   optimizeDeps: {
@@ -18,6 +20,11 @@ export default defineConfig({
       external: ['@icr/polyseg-wasm'],
     },
   },
-  worker: { format: 'es' },
+  worker: {
+    format: 'es',
+    rollupOptions: {
+      external: ['@icr/polyseg-wasm'],
+    },
+  },
   server: { port: 5173 },
 });
