@@ -9,15 +9,18 @@ import { clearAllAnnotations } from './cornerstone/annotations.js';
 import { resetView, setWindowLevel, toggleInvert } from './cornerstone/viewport.js';
 import { DEMO_SLICES, buildImageIdsFromFiles, demoImageIds } from './utils/dicomFiles.js';
 
+const DEMO_STATUS = {
+  type: 'ok',
+  text: `Loaded synthetic coronary phantom (${DEMO_SLICES} slices). Scroll to find the plaque, then draw an ROI on the vessel.`,
+};
+
 export default function App() {
-  const [imageIds, setImageIds] = useState([]);
+  // Start with the demo phantom already loaded
+  const [imageIds, setImageIds] = useState(() => demoImageIds());
   const [ready, setReady] = useState(false);
   const [busy, setBusy] = useState(false);
   const [activeTool, setActiveTool] = useState(DEFAULT_TOOL);
-  const [status, setStatus] = useState({
-    type: 'info',
-    text: 'Start with the demo phantom, or open your own DICOM files.',
-  });
+  const [status, setStatus] = useState(DEMO_STATUS);
 
   const { rows, refresh } = useMeasurements(imageIds, ready);
   const handleReady = useCallback(() => setReady(true), []);
@@ -41,10 +44,7 @@ export default function App() {
 
   const loadDemo = () => {
     setImageIds(demoImageIds());
-    setStatus({
-      type: 'ok',
-      text: `Loaded synthetic coronary phantom (${DEMO_SLICES} slices). Scroll to find the plaque, then draw an ROI on the vessel.`,
-    });
+    setStatus(DEMO_STATUS);
   };
 
   const loadFiles = async (files) => {
