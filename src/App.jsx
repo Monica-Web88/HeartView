@@ -79,7 +79,7 @@ export default function App() {
             <p>Coronary CT plaque viewer · React + Cornerstone3D</p>
           </div>
         </div>
-        <span className="pill">Educational demo – not a medical device</span>
+       {/*<span className="pill">Educational demo – not a medical device</span>*/}
       </header>
 
       <main className="layout">
